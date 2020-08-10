@@ -1,7 +1,111 @@
-<div class="container">
-  <h1 class="title">
-    {{ 'PAGES.HOME.TITLE' | translate }}
-  </h1>
+<mat-toolbar fxLayoutAlign="space-between center">
+  <span style="color: #eb4d9f  ">Ladies Club</span>
+  <img src="./../../assets/icons/logo_original transparent.png" width="90" height="90" />
+  <button mat-button color="accent" class="newMemberButton" (click)="newMember()">Nouveau Membre</button>
+</mat-toolbar>
+<div fxLayoutAlign="center center">
+  <h3>Liste des membres Enfants</h3>
+</div>
+<div class="mat-elevation-z8" fxLayout="column">
 
-  <a routerLink="/detail">{{ 'PAGES.HOME.GO_TO_DETAIL' | translate }}</a>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <mat-form-field fxFlex="50">
+      <input #childInput matInput placeholder="Rechercher">
+    </mat-form-field>
+  </div>
+  <table mat-table [dataSource]="childDataSource">
+
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef> Nom </th>
+      <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef> Prénom </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="dateOfBirth">
+      <th mat-header-cell *matHeaderCellDef> Date de naissance </th>
+      <td mat-cell *matCellDef="let element"> {{element.dateOfBirth}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="aboType">
+      <th mat-header-cell *matHeaderCellDef> Type abonnement </th>
+      <td mat-cell *matCellDef="let element"> {{element.aboType}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="aboLength">
+      <th mat-header-cell *matHeaderCellDef> Durée abonnement </th>
+      <td mat-cell *matCellDef="let element"> {{element.aboLength}} Mois</td>
+    </ng-container>
+
+    <ng-container matColumnDef="startDate">
+      <th mat-header-cell *matHeaderCellDef> Date de début </th>
+      <td mat-cell *matCellDef="let element"> {{element.startDate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="endDate">
+      <th mat-header-cell *matHeaderCellDef> Date de fin </th>
+      <td mat-cell *matCellDef="let element"> {{element.endDate}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="childDetails(row)"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+<div fxLayoutAlign="center center">
+  <h3>Liste des membres adultes</h3>
+</div>
+<div class="mat-elevation-z8" fxLayout="column">
+
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <mat-form-field fxFlex="50">
+      <input #adultInput matInput placeholder="Rechercher">
+    </mat-form-field>
+  </div>
+  <table mat-table [dataSource]="adultDataSource">
+
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef> Nom </th>
+      <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef> Prénom </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="dateOfBirth">
+      <th mat-header-cell *matHeaderCellDef> Date de naissance </th>
+      <td mat-cell *matCellDef="let element"> {{element.dateOfBirth}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="aboType">
+      <th mat-header-cell *matHeaderCellDef> Type abonnement </th>
+      <td mat-cell *matCellDef="let element"> {{element.aboType}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="aboLength">
+      <th mat-header-cell *matHeaderCellDef> Durée abonnement </th>
+      <td mat-cell *matCellDef="let element"> {{element.aboLength}} Mois</td>
+    </ng-container>
+
+    <ng-container matColumnDef="startDate">
+      <th mat-header-cell *matHeaderCellDef> Date de début </th>
+      <td mat-cell *matCellDef="let element"> {{element.startDate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="endDate">
+      <th mat-header-cell *matHeaderCellDef> Date de fin </th>
+      <td mat-cell *matCellDef="let element"> {{element.endDate}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="adultDetails(row)"></tr>
+  </table>
+
+  <mat-paginator #adultPaginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>

@@ -1,0 +1,177 @@
+<form fxLayout="column" fxLayoutAlign="center stretch" [formGroup]="newMemberForm">
+    <span style="margin-bottom: 30px; text-align: center">Veuillez compléter le formulaire</span>
+    <div *ngIf='mode' fxLayout="column" fxLayoutAlign="center stretch">
+        Informations générales
+        <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="25">
+            <mat-radio-group formControlName="title" fxLayoutGap="10px" fxLayout="column">
+                <mat-radio-button value="mme">Mme</mat-radio-button>
+                <mat-radio-button value="mlle">Mlle</mat-radio-button>
+            </mat-radio-group>
+            <mat-form-field appearance="outline" fxFlex="25">
+                <mat-label>Nom</mat-label>
+                <input formControlName="firstName" matInput placeholder="Nom">
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="25">
+                <mat-label>Prénom</mat-label>
+                <input formControlName="lastName" matInput placeholder="Prénom">
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="25">
+                <mat-label>Date de naissance</mat-label>
+                <input [matDatepicker]="pickerr" formControlName="dateOfBirth" matInput placeholder="Date de naissance">
+                <mat-datepicker-toggle [for]="pickerr" matSuffix></mat-datepicker-toggle>
+                <mat-datepicker #pickerr></mat-datepicker>
+            </mat-form-field>
+        </div>
+        Contact
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+            <mat-form-field appearance="outline" fxFlex="30">
+                <mat-label>Adresse</mat-label>
+                <input formControlName="address" matInput placeholder="Adresse">
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="30">
+                <mat-label>Téléphone 1: </mat-label>
+                <input formControlName="phoneNumber1" type="number" matInput placeholder="Téléphone">
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="30">
+                <mat-label>Téléphone 2:</mat-label>
+                <input formControlName="phoneNumber2" type="number" matInput placeholder="Téléphone">
+            </mat-form-field>
+        </div>
+        Informations Abonnement
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+            <mat-form-field appearance="outline" fxFlex="20">
+                <mat-label>Durée d'abonnement</mat-label>
+                <mat-select formControlName="aboLength" placeholder="Durée d'abonnement">
+                    <mat-option value="1">1 Mois</mat-option>
+                    <mat-option value="3">3 Mois</mat-option>
+                    <mat-option value="6">6 Mois</mat-option>
+                    <mat-option value="12">12 Mois</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="20">
+                <mat-label>Type d'abonnement</mat-label>
+                <mat-select formControlName="aboType" placeholder="Type d'abonnement">
+                    <mat-option value="light">Light</mat-option>
+                    <mat-option value="normal">Normal</mat-option>
+                    <mat-option value="full">Full</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="20">
+                <mat-label>Date de début</mat-label>
+                <input [matDatepicker]="picker" formControlName="startDate" matInput placeholder="Date de début">
+                <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="20">
+                <mat-label>Date de fin</mat-label>
+                <input [matDatepicker]="pickerrr" formControlName="endDate" matInput placeholder="Date de fin">
+                <mat-datepicker-toggle [for]="pickerrr" matSuffix></mat-datepicker-toggle>
+                <mat-datepicker #pickerrr></mat-datepicker>
+            </mat-form-field>
+        </div>
+        Autres
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+            <mat-form-field appearance="outline" fxFlex="48">
+                <mat-label>Comment avez vous trouvé notre club ?</mat-label>
+                <textarea formControlName="findings" matInput placeholder="Comment avez vous trouvé notre club ?"
+                    cdkTextareaAutosize cdkAutosizeMinRows="6" cdkAutosizeMaxRows="6"></textarea>
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="48">
+                <mat-label>Observations</mat-label>
+                <textarea formControlName="observations" matInput placeholder="Observations" cdkTextareaAutosize
+                    cdkAutosizeMinRows="6" cdkAutosizeMaxRows="6"></textarea>
+            </mat-form-field>
+        </div>
+    </div>
+    <div *ngIf='!mode' fxLayout="column" fxLayoutAlign="center stretch">
+        Informations générales
+        <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="25">
+            <mat-radio-group formControlName="gender" fxLayoutGap="10px" fxLayout="column">
+                <mat-radio-button value="male">M</mat-radio-button>
+                <mat-radio-button value="female">F</mat-radio-button>
+            </mat-radio-group>
+            <mat-form-field appearance="outline" fxFlex="25">
+                <mat-label>Nom</mat-label>
+                <input formControlName="firstName" matInput placeholder="Nom">
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="25">
+                <mat-label>Prénom</mat-label>
+                <input formControlName="lastName" matInput placeholder="Prénom">
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="25">
+                <mat-label>Date de naissance</mat-label>
+                <input [matDatepicker]="pickerr" formControlName="dateOfBirth" matInput placeholder="Date de naissance">
+                <mat-datepicker-toggle [for]="pickerr" matSuffix></mat-datepicker-toggle>
+                <mat-datepicker #pickerr></mat-datepicker>
+            </mat-form-field>
+        </div>
+        Informations Parents
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+            <mat-form-field appearance="outline" fxFlex="48">
+                <mat-label>Nom et Prénom parent 1</mat-label>
+                <input formControlName="nameParent1" matInput placeholder="Adresse">
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="48">
+                <mat-label>Nom et Prénom parent 2</mat-label>
+                <input formControlName="nameParent2" matInput placeholder="Téléphone">
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+            <mat-form-field appearance="outline" fxFlex="48">
+                <mat-label>Téléphone parent 1</mat-label>
+                <input formControlName="phoneNumberParent1" matInput type="number" placeholder="Téléphone parent 1">
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="48">
+                <mat-label>Téléphone parent 2</mat-label>
+                <input formControlName="phoneNumberParent2" matInput type="number" placeholder="Téléphone parent 2">
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+            <mat-form-field appearance="outline" fxFlex="50">
+                <mat-label>Addresse parents</mat-label>
+                <input formControlName="addressParent" matInput placeholder="Addresse parents">
+            </mat-form-field>
+        </div>
+        Informations Abonnement
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+            <mat-form-field appearance="outline" fxFlex="30">
+                <mat-label>Durée d'abonnement</mat-label>
+                <mat-select formControlName="aboLength" placeholder="Durée d'abonnement">
+                    <mat-option [value]="1">1 Mois</mat-option>
+                    <mat-option [value]="3">3 Mois</mat-option>
+                    <mat-option [value]="6">6 Mois</mat-option>
+                    <mat-option [value]="12">12 Mois</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="30">
+                <mat-label>Date de début</mat-label>
+                <input [matDatepicker]="picker" formControlName="startDate" matInput placeholder="Date de début">
+                <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="30">
+                <mat-label>Date de fin</mat-label>
+                <input [matDatepicker]="pickerrr" formControlName="endDate" matInput placeholder="Date de fin">
+                <mat-datepicker-toggle [for]="pickerrr" matSuffix></mat-datepicker-toggle>
+                <mat-datepicker #pickerrr></mat-datepicker>
+            </mat-form-field>
+        </div>
+        Autres
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+            <mat-form-field appearance="outline" fxFlex="48">
+                <mat-label>Comment avez vous trouvé notre club ?</mat-label>
+                <textarea formControlName="findings" matInput placeholder="Comment avez vous trouvé notre club ?"
+                    cdkTextareaAutosize cdkAutosizeMinRows="6" cdkAutosizeMaxRows="6"></textarea>
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="48">
+                <mat-label>Observations</mat-label>
+                <textarea formControlName="observations" matInput placeholder="Observations" cdkTextareaAutosize
+                    cdkAutosizeMinRows="6" cdkAutosizeMaxRows="6"></textarea>
+            </mat-form-field>
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutGap="30px" fxLayoutAlign="center center">
+        <button mat-button style="background-color: #b0b0b0" (click)="cancel()">Annuler</button>
+        <button [disabled]="!newMemberForm.valid" mat-button style="background-color: #eb4d9f; color: white" (click)="save()"><b>Enregistrer</b></button>
+    </div>
+</form>

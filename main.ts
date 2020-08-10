@@ -21,6 +21,7 @@ function createWindow(): BrowserWindow {
       nodeIntegration: true,
       allowRunningInsecureContent: (serve) ? true : false,
     },
+    icon: `${__dirname}/icons/logo_original transparent.png`,
   });
 
   if (serve) {
